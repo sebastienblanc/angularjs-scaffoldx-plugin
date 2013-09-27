@@ -125,31 +125,31 @@ public class AngularScaffold extends BaseFacet implements ScaffoldProvider {
     @Override
     @SuppressWarnings("unchecked")
     public boolean isInstalled() {
-        this.targetDir = getProjectConfiguration().getString(getTargetDirConfigKey(this));
-        if (project.hasAllFacets(WebResourceFacet.class, DependencyFacet.class, PersistenceFacet.class, EJBFacet.class,
-                CDIFacet.class, RestFacet.class)) {
-            // If the facet installation is in progress due to an InstallFacet event being fired, then the files would not
-            // be available since ScaffoldProvider.setup would not have been executed, yet. We relax the facet installed
-            // condition in such a case, to include only depdendencies being installed.
-            Object isInstallInProgress = this.project.getAttribute(INSTALLING_SCAFFOLD);
-            if (isInstallInProgress != null && isInstallInProgress.equals(Boolean.TRUE))
-            {
-               return true;
-            }
-            WebResourceFacet web = this.project.getFacet(WebResourceFacet.class);
-            boolean areResourcesInstalled = web.getWebResource(targetDir + GLYPHICONS_WHITE_PNG).exists()
-                    && web.getWebResource(targetDir + GLYPHICONS_PNG).exists()
-                    && web.getWebResource(targetDir + FORGE_LOGO_PNG).exists()
-                    && web.getWebResource(targetDir + ANGULAR_RESOURCE_JS).exists()
-                    && web.getWebResource(targetDir + ANGULAR_JS).exists()
-                    && web.getWebResource(targetDir + JQUERY_JS).exists()
-                    && web.getWebResource(targetDir + BOOTSTRAP_RESPONSIVE_CSS).exists()
-                    && web.getWebResource(targetDir + MAIN_CSS).exists()
-                    && web.getWebResource(targetDir + BOOTSTRAP_CSS).exists()
-                    && web.getWebResource(targetDir + LANDING_VIEW).exists();
-            return areResourcesInstalled;
-        }
-        return false;
+//        this.targetDir = getProjectConfiguration().getString(getTargetDirConfigKey(this));
+//        if (project.hasAllFacets(WebResourceFacet.class, DependencyFacet.class, PersistenceFacet.class, EJBFacet.class,
+//                CDIFacet.class, RestFacet.class)) {
+//            // If the facet installation is in progress due to an InstallFacet event being fired, then the files would not
+//            // be available since ScaffoldProvider.setup would not have been executed, yet. We relax the facet installed
+//            // condition in such a case, to include only depdendencies being installed.
+//            Object isInstallInProgress = this.project.getAttribute(INSTALLING_SCAFFOLD);
+//            if (isInstallInProgress != null && isInstallInProgress.equals(Boolean.TRUE))
+//            {
+//               return true;
+//            }
+//            WebResourceFacet web = this.project.getFacet(WebResourceFacet.class);
+//            boolean areResourcesInstalled = web.getWebResource(targetDir + GLYPHICONS_WHITE_PNG).exists()
+//                    && web.getWebResource(targetDir + GLYPHICONS_PNG).exists()
+//                    && web.getWebResource(targetDir + FORGE_LOGO_PNG).exists()
+//                    && web.getWebResource(targetDir + ANGULAR_RESOURCE_JS).exists()
+//                    && web.getWebResource(targetDir + ANGULAR_JS).exists()
+//                    && web.getWebResource(targetDir + JQUERY_JS).exists()
+//                    && web.getWebResource(targetDir + BOOTSTRAP_RESPONSIVE_CSS).exists()
+//                    && web.getWebResource(targetDir + MAIN_CSS).exists()
+//                    && web.getWebResource(targetDir + BOOTSTRAP_CSS).exists()
+//                    && web.getWebResource(targetDir + LANDING_VIEW).exists();
+//            return areResourcesInstalled;
+//        }
+        return true;
     }
 
     /**
@@ -246,6 +246,9 @@ public class AngularScaffold extends BaseFacet implements ScaffoldProvider {
             String entityId = angularResultEnhancer.fetchEntityId(klass, inspectionResults);
             inspectionResults = angularResultEnhancer.enhanceResults(klass, inspectionResults);
 
+            String title = angularResultEnhancer.fetchEntityTitle(klass, inspectionResults);
+            String description = angularResultEnhancer.fetchEntityDescription(klass, inspectionResults);
+
             // TODO: Provide a 'utility' class for allowing transliteration across language naming schemes
             // We need this to use contextual naming schemes instead of performing toLowerCase etc. in FTLs.
 
@@ -253,6 +256,8 @@ public class AngularScaffold extends BaseFacet implements ScaffoldProvider {
             Map<String, Object> root = new HashMap<String, Object>();
             root.put("entityName", klass.getName());
             root.put("entityId", entityId);
+            root.put("title", title);
+            root.put("description", description);
             root.put("properties", inspectionResults);
             root.put("projectId", StringUtils.camelCase(metadata.getProjectName()));
             root.put("projectTitle", StringUtils.uncamelCase(metadata.getProjectName()));

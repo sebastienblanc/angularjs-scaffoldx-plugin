@@ -26,6 +26,16 @@ public class ResourceProvider {
 
     static final String GLYPHICONS_PNG = "/img/glyphicons-halflings.png";
 
+    static final String LISTVIEW_SVG = "/img/listview.svg";
+
+    static final String PENCIL_SVG = "/img/pencil.svg";
+
+    static final String DELETE_SVG = "/img/delete.svg";
+
+    static final String SAVE_SVG = "/img/save.svg";
+
+    static final String HOME_SVG = "/img/home.svg";
+
     static final String FORGE_LOGO_PNG = "/img/forge-logo.png";
 
     static final String ANGULAR_RESOURCE_JS = "/scripts/vendor/angular-resource.js";
@@ -38,7 +48,7 @@ public class ResourceProvider {
 
     static final String MAIN_CSS = "/styles/main.css";
 
-    static final String BOOTSTRAP_CSS = "/styles/bootstrap.css";
+    static final String TOPCOAT_CSS = "/styles/topcoat-mobile-light.css";
 
     /**
      * Provides a list of {@link ScaffoldResource}s representing static files that are to be copied upon scaffolding setup.
@@ -49,16 +59,20 @@ public class ResourceProvider {
      */
     public static List<ScaffoldResource> getStatics(String targetDir) {
         List<ScaffoldResource> statics = new ArrayList<ScaffoldResource>();
-        statics.add(new ScaffoldResource(SCAFFOLD_DIR + BOOTSTRAP_CSS, targetDir + BOOTSTRAP_CSS));
+        statics.add(new ScaffoldResource(SCAFFOLD_DIR + TOPCOAT_CSS, targetDir + TOPCOAT_CSS));
         statics.add(new ScaffoldResource(SCAFFOLD_DIR + MAIN_CSS, targetDir + MAIN_CSS));
-        statics.add(new ScaffoldResource(SCAFFOLD_DIR + BOOTSTRAP_RESPONSIVE_CSS, targetDir + BOOTSTRAP_RESPONSIVE_CSS));
         statics.add(new ScaffoldResource(SCAFFOLD_DIR + JQUERY_JS, targetDir + JQUERY_JS));
         statics.add(new ScaffoldResource(SCAFFOLD_DIR + ANGULAR_JS, targetDir + ANGULAR_JS));
         statics.add(new ScaffoldResource(SCAFFOLD_DIR + ANGULAR_RESOURCE_JS, targetDir + ANGULAR_RESOURCE_JS));
         statics.add(new ScaffoldResource(SCAFFOLD_DIR + FORGE_LOGO_PNG, targetDir + FORGE_LOGO_PNG));
         statics.add(new ScaffoldResource(SCAFFOLD_DIR + GLYPHICONS_PNG, targetDir + GLYPHICONS_PNG));
         statics.add(new ScaffoldResource(SCAFFOLD_DIR + GLYPHICONS_WHITE_PNG, targetDir + GLYPHICONS_WHITE_PNG));
-        statics.add(new ScaffoldResource(SCAFFOLD_DIR + LANDING_VIEW, targetDir + LANDING_VIEW));
+        statics.add(new ScaffoldResource(SCAFFOLD_DIR + LISTVIEW_SVG, targetDir + LISTVIEW_SVG));
+        statics.add(new ScaffoldResource(SCAFFOLD_DIR + SAVE_SVG, targetDir + SAVE_SVG));
+        statics.add(new ScaffoldResource(SCAFFOLD_DIR + DELETE_SVG, targetDir + DELETE_SVG));
+        statics.add(new ScaffoldResource(SCAFFOLD_DIR + PENCIL_SVG, targetDir + PENCIL_SVG));
+        statics.add(new ScaffoldResource(SCAFFOLD_DIR + HOME_SVG, targetDir + HOME_SVG));
+        //statics.add(new ScaffoldResource(SCAFFOLD_DIR + LANDING_VIEW, targetDir + LANDING_VIEW));
         return statics;
     }
     
@@ -82,6 +96,7 @@ public class ResourceProvider {
                 + "/scripts/filters/genericSearchFilter.js"));
         resources.add(new ScaffoldResource("scripts/filters/startFromFilter.js.ftl", targetDir
                 + "/scripts/filters/startFromFilter.js"));
+        resources.add(new ScaffoldResource("views/landing.html.ftl", targetDir + "/views/landing.html"));
         return resources;
     }
 

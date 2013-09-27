@@ -86,7 +86,7 @@ angular.module('${angularApp}').controller('${angularController}', function($sco
 
     $scope.save = function() {
         var successCallback = function(){
-            $scope.get();
+            $location.path("${entityRoute}");
             $scope.displayError = false;
         };
         var errorCallback = function() {

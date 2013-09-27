@@ -84,7 +84,7 @@ angular.module('${angularApp}').controller('${angularController}', function ($sc
     $scope.save = function() {
         var successCallback = function(data,responseHeaders){
             var id = locationParser(responseHeaders);
-            $location.path('${entityRoute}/edit/' + id);
+            $location.path('${entityRoute}');
             $scope.displayError = false;
         };
         var errorCallback = function() {

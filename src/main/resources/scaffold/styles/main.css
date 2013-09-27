@@ -1,122 +1,129 @@
 @CHARSET "UTF-8";
 
-/* Sticky footer styles
- -------------------------------------------------- */
-
-html, body {
-    height: 100%;
-    /* The html and body elements cannot have any padding or margin. */
+a {
+    text-decoration: none;
+    color: inherit;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgb(0, 0, 0);
 }
 
-/* Wrapper for page content to push down footer */
-#wrap {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    /* Negative indent footer by it's height */
-    margin: 0 auto -60px;
+.list li {
+    position: relative;
+    text-align: left;
+    clear: both;
+    padding: 12px 60px 16px 8px !important;
 }
 
-#wrap > .container-fluid {
-    padding-top: 40px;
+.list>li p:nth-of-type(1) {
+    margin: 0px;
+    padding-top: 4px;
+    font-weight: bold;
 }
 
-/* Set the fixed height of the footer here */
-#push, #footer {
-    height: 59px;
+.list>li p:nth-of-type(2) {
+    margin: 0px;
+    color: #888;
 }
-#footer {
-    background-color: #F5F5F5;
+
+.list>li img {
+    width: 48px;
+    height: 48px;
+    float: left;
+    margin-top: 0px;
+    margin-right: 8px;
+}
+
+.list li:active {
+    background-color: #404141;
+    -webkit-box-shadow: inset 0 1px rgba(0, 0, 0, 0.18);
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.18);
+}
+
+.action-list>li {
+    position: relative;
+}
+
+.action-icon {
+    position: absolute !important;
+    top: 22px;
+    right: 20px !important;
+    width: 28px !important;
+    height: 28px;
+}
+
+.actions li p:nth-of-type(2) {
+    color: #58C0FF;
+}
+
+ul {
+    clear: both;
+    border-top: none !important;
+}
+
+.topcoat-overlay {
+    width: 33%;
+    height: auto;
+    overflow: hidden;
+    position: absolute;
+    z-index: 10;
+    margin: 20%;
+    padding: 20px 10px;
+    border-radius: 6px;
+    background-color: #e5e9e8;
+    border: 1px solid #a5a8a8;
     text-align: center;
-    border-top: 1px solid #E5E5E5;
 }
 
-h2 i.icon-check {
-    vertical-align: middle;
+.topcoat-overlay h1 {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d3d7d7;
 }
 
-/* Lastly, apply responsive CSS fixes as necessary */
-@media (max-width: 767px) {
-    #footer {
-        margin-left: -20px;
-        margin-right: -20px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+.topcoat-overlay-bg {
+    position: absolute;
+    z-index: 5;
+    background-color: rgba(88, 90, 92, 0.7);
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0px 0px 115px 0px #000;
 }
 
-/* Flip-scroll from http://elvery.net/demo/responsive-tables/ */
+.topcoat-overlay-buttons {
+    margin-top: 20px;
+}
 
-@media only screen and (max-width: 767px) {
-    /* Not necessary, since Bootstrap provides .clearfix
-     #main .cf:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
-     #main * html .cf { zoom: 1; }
-     #main *:first-child+html .cf { zoom: 1; }
-     */
-    #main table {
-        width: 100%;
-        border-collapse: collapse;
-        border-spacing: 0;
-    }
+.topcoat-overlay-buttons .topcoat-button,.topcoat-overlay-buttons .topcoat-button--cta
+{
+    margin: 5px;
+}
 
-    #main th, #main td {
-        margin: 0;
-        vertical-align: top;
-        border-top: 1px solid #DDDDDD;
-    }
-    #main th {
-        text-align: left;
-    }
-    #main table {
-        display: block;
-        position: relative;
-        width: 100%;
-    }
-    #main thead {
-        display: block;
-        float: left;
-    }
-    #main tbody {
-        display: block;
-        width: auto;
-        position: relative;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-    #main thead tr {
-        display: block;
-    }
-    #main th {
-        display: block;
-        text-align: right;
-    }
-    #main tbody tr {
-        display: inline-block;
-        vertical-align: top;
-    }
-    #main td {
-        display: block;
-        min-height: 1.4em;
-        text-align: left;
-    }
+.bar {
+    left: 0;
+    right: 0;
+    z-index: 1010;
+    min-height: 40px;
+    line-height: 40px;
+    background-image: -webkit-linear-gradient(hsla(207, 10%, 35%, .97),
+    hsla(207, 5%, 25%, .92));
+    background-image: -moz-linear-gradient(hsla(207, 10%, 35%, .97),
+    hsla(207, 5%, 25%, .92));
+    background-image: -o-linear-gradient(hsla(207, 10%, 35%, .97),
+    hsla(207, 5%, 25%, .92));
+    background-image: linear-gradient(hsla(207, 10%, 35%, .97),
+    hsla(207, 5%, 25%, .92));
+}
 
-    /* sort out borders */
+.bar,.bar a,.bar a:visited {
+    color: hsl(27, 10%, 85%);
+    text-shadow: 1px 1px 0 hsla(27, 5%, 0%, .5);
+}
 
-    #main th {
-        border-bottom: 0;
-    }/*border-left: 0;*/ /* Note: Left border need not be cleared with Bootstrap 2.2*/
-    #main td {
-        border-left: 0;
-        border-right: 0;
-        border-bottom: 0;
-    }
-    #main tbody tr {
-        border-left: 1px solid #babcbf;
-    }
-    #main th:last-child, #main td:last-child {
-        border-bottom: 1px solid #babcbf;
-    }
-    #main tbody> tr:last-child {
-        border-right: 1px solid #BABCBF;
-    }
+.bar.bottom {
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0 -1px 2px hsla(207, 5%, 0%, .2);
+}
+
+.settings {
+    text-align: center;
 }

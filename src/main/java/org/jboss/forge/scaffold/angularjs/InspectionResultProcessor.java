@@ -97,6 +97,27 @@ public class InspectionResultProcessor {
         throw new IllegalStateException("No Id was found for the class:" + entity.getName());
     }
 
+    public String fetchEntityTitle(JavaClass entity, List<Map<String, String>> inspectionResults) {
+        for (Map<String, String> inspectionResult : inspectionResults) {
+            if (inspectionResult.get(NAME).equals("title")) {
+                return inspectionResult.get(NAME);
+            }
+        }
+        throw new IllegalStateException("No title was found for the class:" + entity.getName());
+    }
+
+    public String fetchEntityDescription(JavaClass entity, List<Map<String, String>> inspectionResults) {
+        for (Map<String, String> inspectionResult : inspectionResults) {
+            if (inspectionResult.get(NAME).equals("description")) {
+                return inspectionResult.get(NAME);
+            }
+        }
+        throw new IllegalStateException("No description was found for the class:" + entity.getName());
+    }
+
+
+
+
     private List<Map<String, String>> expandEmbeddableTypes(Map<String, String> propertyAttributes) {
         String isEmbeddableAttribute = propertyAttributes.get(ForgeInspectionResultConstants.EMBEDDABLE);
         boolean isEmbeddable = isEmbeddableAttribute != null && isEmbeddableAttribute.equals(InspectionResultConstants.TRUE);

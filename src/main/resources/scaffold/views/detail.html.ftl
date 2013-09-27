@@ -19,11 +19,21 @@
         <#include "includes/basicPropertyDetail.html.ftl" >
         </#if>
     </#list>
-    <div class="control-group">
-        <div class="controls">
-            <button id="save${entityName}" name="save${entityName}" class="btn btn-primary" ng-disabled="isClean() || ${formName}.$invalid" ng-click="save()"><i class="icon-ok-sign icon-white"></i> Save</button>
-            <button id="cancel" name="cancel" class="btn" ng-click="cancel()"><i class="icon-remove-sign"></i> Cancel</button>
-            <button id="delete${entityName}" name="delete${entityName}" class="btn btn-danger" ng-show="${model}.${entityId}" ng-click="remove()"><i class="icon-trash icon-white"></i> Delete</button>
+
+    <div class="bar bottom">
+        <div class="settings container">
+            <a href="#/"> <img src='img/home.svg' />
+            </a>
+            <a href="#/Posts"> <img src='img/listview.svg' />
+            </a>
+            <a id="savesave${entityName}" name="save${entityName}" role="button"
+               ng-click="save()" >
+                <img src='img/save.svg'/>
+            </a>
+            <a id="delete" name="delete" role="button"
+               ng-click="remove()" >
+                <img src='img/delete.svg'/>
+            </a>
         </div>
-    <div>
+    </div>
 </form>
